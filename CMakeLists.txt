@@ -169,7 +169,7 @@ if (NOT EMBEDDED_RESTC_CPP)
         set(RESTC_CPP_HAVE_BOOST_TYPEINDEX 1)
     endif()
 
-    if (MSVC)
+    if (WIN32)
         link_directories(${Boost_LIBRARY_DIRS})
     endif()
 
