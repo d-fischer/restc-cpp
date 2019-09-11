@@ -110,7 +110,7 @@ if (RESTC_CPP_WITH_ZLIB)
     set(ACTUAL_SOURCES ${ACTUAL_SOURCES} src/ZipReaderImpl.cpp)
 endif()
 
-if (WIN32)
+if (MSVC)
     include(cmake_scripts/pch.cmake)
     ADD_MSVC_PRECOMPILED_HEADER(restc-cpp/restc-cpp.h src/pch.cpp ACTUAL_SOURCES)
     add_definitions(-DWAR_PCH)
@@ -169,7 +169,7 @@ if (NOT EMBEDDED_RESTC_CPP)
         set(RESTC_CPP_HAVE_BOOST_TYPEINDEX 1)
     endif()
 
-    if (WIN32)
+    if (MSVC)
         link_directories(${Boost_LIBRARY_DIRS})
     endif()
 
@@ -177,7 +177,7 @@ if (NOT EMBEDDED_RESTC_CPP)
 
     set_property(TARGET  PROPERTY CXX_STANDARD 17)
 
-    if(WIN32)
+    if(MSVC)
         add_definitions(-D_WIN32_WINNT=0x0600)
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SAFESEH:NO")
     endif()
